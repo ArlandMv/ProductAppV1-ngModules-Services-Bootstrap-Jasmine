@@ -1,0 +1,22 @@
+<h2 class="">Lista de Productos</h2>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Last Modified</th>
+    </tr>
+  </thead>
+  <tbody class="table-light">
+    <tr *ngFor="let product of products">
+      <th scope="row">{{ product.id }}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | currency }}</td>
+      <td *ngIf="product.lastModified">
+        {{ product.lastModified | date : "medium" }}
+      </td>
+    </tr>
+  </tbody>
+</table>
