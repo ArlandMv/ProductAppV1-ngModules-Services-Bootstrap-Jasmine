@@ -7,13 +7,22 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseURL = 'http://localhost:8080/api/v1/products;';
-  private cloudURL = 'http://localhost:8080/api/v1/products;';
+  private baseURL = 'http://localhost:8080/api';
+  private version = 'v1';
+  private resource = 'products';
+  private url = 'http://localhost:8080/api/v1/products';
 
-  constructor() {} //private http: HttpClient
+  constructor(private httpClient: HttpClient) {
+    //this.url = `${this.baseURL}/${this.version}/${this.resource};`;
+  }
 
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  /*
   private products: Product[] = [
-    {
+  {
       id: 1,
       name: 'Product 1',
       price: 19.99,
@@ -26,22 +35,24 @@ export class ProductService {
       lastModified: new Date(),
     },
   ];
+    */
 
   getProducts(): Observable<Product[]> {
-    return of(this.products);
-    //return this.httpClient.get<Product[]>(this.baseURL);
+    console.log(this.url);
+    return this.httpClient.get<Product[]>(this.url);
   }
 
   getProductById(id: number): Observable<Product | undefined> {
-    return of(this.products.find((product) => product.id === id));
-    //return this.httpClient.get<Product[]>(this.baseURL);
+    return this.httpClient.get<Product>(this.baseURL);
   }
 
-  addProduct(product: Product): void {
+  addProduct(product: Product): Observable<Product> {
     if (!product.lastModified) {
       product.lastModified = new Date();
     }
-    this.products.push(product);
-    //return this.httpClient.post<Product>(this.baseURL, product);
+    return this.httpClient.post<Product>(this.baseURL, product);
   }
+
+  //updateProduct Observable<Product>
+  //deleteProduct Observable<void>
 }
