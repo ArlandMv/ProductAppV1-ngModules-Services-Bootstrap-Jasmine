@@ -1,6 +1,6 @@
 //export interface Product
 export class Product {
-  id: number;
+  idProduct: number;
   name: string;
   price: number;
   lastModified?: Date;

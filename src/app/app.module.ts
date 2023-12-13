@@ -13,6 +13,7 @@ import { ProductService } from './services/product.service';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AboutComponent } from './components/about/about.component';
     HomeComponent,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [ProductService],
   bootstrap: [AppComponent],
 })

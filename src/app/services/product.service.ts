@@ -50,7 +50,7 @@ export class ProductService {
     if (!product.lastModified) {
       product.lastModified = new Date();
     }
-    return this.httpClient.post<Product>(this.baseURL, product);
+    return this.httpClient.post<Product>(this.url, product);
   }
 
   //updateProduct Observable<Product>

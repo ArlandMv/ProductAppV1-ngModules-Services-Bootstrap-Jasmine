@@ -1,4 +1,9 @@
-<h2 class="">Lista de Productos</h2>
+<div class="my-2 d-flex justify-content-between">
+  <h2 class="">Lista de Productos</h2>
+  <button type="button" class="btn btn-primary" routerLink="/register-product">
+    + Product
+  </button>
+</div>
 
 <table class="table table-striped">
   <thead class="table-dark">
@@ -11,7 +16,7 @@
   </thead>
   <tbody class="table-light">
     <tr *ngFor="let product of products">
-      <th scope="row">{{ product.id }}</th>
+      <th scope="row">{{ product.idProduct }}</th>
       <td>{{ product.name }}</td>
       <td>{{ product.price | currency }}</td>
       <td *ngIf="product.lastModified">
