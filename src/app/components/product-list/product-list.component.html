@@ -12,6 +12,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Last Modified</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody class="table-light">
@@ -20,7 +21,28 @@
       <td>{{ product.name }}</td>
       <td>{{ product.price | currency }}</td>
       <td *ngIf="product.lastModified">
-        {{ product.lastModified | date : "medium" }}
+        {{ product.lastModified | date : "dd/MM/yy" }}
+        {{ product.lastModified | date : "shortTime" }}
+      </td>
+      <td>
+        <button
+          (click)="readProduct(product.idProduct)"
+          class="btn btn-primary"
+        >
+          Details
+        </button>
+        <button
+          (click)="updateProduct(product.idProduct)"
+          class="btn btn-info mx-2"
+        >
+          Update
+        </button>
+        <button
+          (click)="deleteProduct(product.idProduct)"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>

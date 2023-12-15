@@ -14,6 +14,14 @@ import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { FormsModule } from '@angular/forms';
+import { ProductUpdateComponent } from './components/product-update/product-update.component';
+
+//Date import
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -24,9 +32,10 @@ import { FormsModule } from '@angular/forms';
     NavComponent,
     HomeComponent,
     AboutComponent,
+    ProductUpdateComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [ProductService],
+  providers: [ProductService, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

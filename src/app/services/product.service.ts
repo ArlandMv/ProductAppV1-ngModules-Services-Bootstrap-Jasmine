@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -12,9 +12,7 @@ export class ProductService {
   private resource = 'products';
   private url = 'http://localhost:8080/api/v1/products';
 
-  constructor(private httpClient: HttpClient) {
-    //this.url = `${this.baseURL}/${this.version}/${this.resource};`;
-  }
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -43,7 +41,7 @@ export class ProductService {
   }
 
   getProductById(id: number): Observable<Product | undefined> {
-    return this.httpClient.get<Product>(this.baseURL);
+    return this.httpClient.get<Product>(this.url + '/' + id);
   }
 
   addProduct(product: Product): Observable<Product> {
@@ -53,6 +51,15 @@ export class ProductService {
     return this.httpClient.post<Product>(this.url, product);
   }
 
-  //updateProduct Observable<Product>
-  //deleteProduct Observable<void>
+  updateProduct(id: number, product: Product): Observable<Object> {
+    return this.httpClient.put(this.baseURL + '/' + id, product);
+  }
+
+  /*deleteProduct(id: number): Observable<Object> {
+    return this.httpClient.delete(this.baseURL + '/' + id);
+  }*/
+
+  deleteProduct(id: number) {
+    return this.httpClient.delete(`${this.url}/${id}`);
+  }
 }
