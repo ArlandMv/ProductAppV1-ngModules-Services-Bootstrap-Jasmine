@@ -52,11 +52,11 @@ export class ProductService {
   }
 
   updateProduct(id: number, product: Product): Observable<Object> {
-    return this.httpClient.put(this.baseURL + '/' + id, product);
+    return this.httpClient.put(this.url + '/' + id, product);
   }
 
   /*deleteProduct(id: number): Observable<Object> {
-    return this.httpClient.delete(this.baseURL + '/' + id);
+    return this.httpClient.delete(this.url + '/' + id);
   }*/
 
   deleteProduct(id: number) {

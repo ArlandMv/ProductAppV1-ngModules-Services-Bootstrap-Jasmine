@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
   id: number;
-  product: Product | undefined;
+  product: Product;
 
   constructor(
     private productService: ProductService,
@@ -23,12 +23,19 @@ export class ProductDetailsComponent implements OnInit {
     this.product = new Product();
     this.readProduct();
   }
-  readProduct() {
-    this.productService.getProductById(this.id).subscribe((data) => {
-      this.product = data;
-    });
-  }
+
   goBack() {
     this.router.navigate(['/products']);
+  }
+
+  readProduct() {
+    this.productService.getProductById(this.id).subscribe({
+      next: (data) => {
+        this.product = data!;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }

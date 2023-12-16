@@ -19,7 +19,7 @@
     <tr *ngFor="let product of products">
       <th scope="row">{{ product.idProduct }}</th>
       <td>{{ product.name }}</td>
-      <td>{{ product.price | currency }}</td>
+      <td>{{ product.price | currency : "CLP" }}</td>
       <td *ngIf="product.lastModified">
         {{ product.lastModified | date : "dd/MM/yy" }}
         {{ product.lastModified | date : "shortTime" }}

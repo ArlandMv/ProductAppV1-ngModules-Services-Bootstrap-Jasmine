@@ -1,1 +1,52 @@
-<p>product-update works!</p>
+<!-- update-product.component.html -->
+
+<div class="container mt-4">
+  <h2>Update Product</h2>
+  <form (submit)="updateProduct()" #updateForm="ngForm">
+    <div class="mb-3">
+      <label for="productName">Product Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="productName"
+        name="productName"
+        [(ngModel)]="product.name"
+        required
+        #name="ngModel"
+      />
+      <div *ngIf="name.touched && name.errors" class="text-danger">
+        Required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="productPrice">Product Price:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="productPrice"
+        name="price"
+        [(ngModel)]="product.price"
+        required
+        [min]="0"
+        #price="ngModel"
+      />
+      <div *ngIf="price.invalid && (price.dirty || price.touched)">
+        <div class="text-danger" *ngIf="price.hasError('required')">
+          Price is required.
+        </div>
+        <div class="text-danger" *ngIf="price.hasError('min')">
+          Price must be a non-negative number.
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary my-2"
+      [disabled]="updateForm.invalid"
+    >
+      Update Product
+    </button>
+  </form>
+</div>
