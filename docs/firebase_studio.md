@@ -1,4 +1,5 @@
 Here's a thinking process to generate the report on the Firebase Studio video transcript:
+SRC= https://youtu.be/-A3QkftCCPw?si=YhO1D-pCI9kT8TGO
 
 1.  **Understand the Goal:** The user wants a \"full report\" of the provided video transcript about Firebase Studio. This means summarizing the key information, structuring it logically, and capturing the main points and features discussed.
 
